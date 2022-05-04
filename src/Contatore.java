@@ -24,4 +24,9 @@ public class Contatore {
         return valore;
     }
 
+    public int getPasso(){
+
+        return passo;
+    }
+
 }

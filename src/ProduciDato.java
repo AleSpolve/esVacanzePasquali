@@ -4,21 +4,23 @@ public class ProduciDato extends Thread{
     Semaforo vuoto;
     int tanti =5;
 
+    Contatore conta;
     final int attesa=500;
 
-    public ProduciDato(Semaforo s1,Semaforo s2){
+    public ProduciDato(Semaforo s1,Semaforo s2,Contatore conta){
         
         pieno=s1;
         vuoto=s2;
+        this.conta=conta;
     }
 
     public void run(){
 
-        for(int k=0;k<tanti;k++){
+        for(int i=0;i<tanti;i++){
 
             vuoto.P();
-            ProdConsSem.buffer=k;
-            System.out.println("Scrittore: dato scritto :" + k);
+            conta.incrementa();
+            System.out.println("Scrittore: dato scritto :" + 1);
             pieno.V();
         }
         try {
